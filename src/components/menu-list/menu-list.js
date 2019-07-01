@@ -4,7 +4,7 @@ import  {connect} from 'react-redux';
 import WithRestoService from '../hoc';
 import {menuLoaded, menuRequested, menuError} from '../../actions';
 import Spinner from '../spinner';
-import Error from '../error';
+import ErrorBoundry from '../error-boundry';
 
 import './menu-list.scss';
 
@@ -16,14 +16,21 @@ class MenuList extends Component {
         const {RestoService} = this.props;
         RestoService.getMenuItems()
             .then(res => this.props.menuLoaded(res))
-            .catch(this.menuError);
+            .catch(this.props.menuError);
     }
 
     render() {
         const {menuItems, loading, error} = this.props; 
 
         if (loading) {return <Spinner/>}
-        if (error) {return <Error/>}
+        if (error) 
+            {
+                return (
+                    <ErrorBoundry>
+
+                    </ErrorBoundry>
+                )
+            }
         
 
         return (
