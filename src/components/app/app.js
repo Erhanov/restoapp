@@ -13,10 +13,13 @@ const App = ({RestoService}) => {
     return (
         <>
             <AppHeader total={50}/>
-            <Switch style={{background: `url(${Background}) center center/cover no-repeat`}} className="app">
-                <Route path='/main' component={MainPage}/>
-                <Route path='/cart' component={CartPage}/>
-            </Switch>
+            <div style={{background: `url(${Background}) center center/cover no-repeat`}} className="app">
+                <Switch>
+                    <Route path='/main' component={MainPage}/>
+                    <Route path='/cart' component={CartPage}/>
+                </Switch>
+            </div>
+            
         </>
         
     )
