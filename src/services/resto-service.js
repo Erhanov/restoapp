@@ -6,7 +6,7 @@ export default class RestoService {
     async getMenuItems() {
         const res = await fetch(`${this._dataBase}`);
 
-        if (!res.ok) {
+        if (res.ok) {
             throw new Error(`Could not fetch, status ${res.status}`);
         }
 

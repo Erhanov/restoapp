@@ -27,7 +27,7 @@ class MenuList extends Component {
             {
                 return (
                     <ErrorBoundry>
-
+                        Error
                     </ErrorBoundry>
                 )
             }
