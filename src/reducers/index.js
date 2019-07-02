@@ -41,7 +41,6 @@ const reducer = (state = initialState, action) => {
                 id : item.id,
                 count : state.count[id - 1]
             };
-            console.log(newItem.count);
             const newTotalAdd = state.total + newItem.price;
             if (state.count[id - 1] < 2) {
                 return {
@@ -64,13 +63,12 @@ const reducer = (state = initialState, action) => {
         case 'ITEM_REMOVE_FROM_CART' :
             const idx = action.payload;
             const itemIndex = state.items.findIndex(item => item.id === idx);
-            console.log(state.count);
             const itemPrice = state.menu.find(item => item.id === idx);
             const newItemDelete = {
                 price : itemPrice.price
             };
             const newTotalDelete = state.total - (newItemDelete.price * state.count[idx - 1]);
-            state.count[idx - 1]--;
+            state.count[idx - 1] = 0;
             return {
                 ...state,
                 items : [
