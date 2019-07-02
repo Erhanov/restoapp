@@ -4,7 +4,7 @@ import imgSalad from './img/salad.png';
 import imgPizza from './img/pizza.png';
 import imgMeat from './img/meat.png';
 
-const MenuListItem = ({menuItem}) => {
+const MenuListItem = ({menuItem, onAddToCart}) => {
     const {title, price, url, category} = menuItem;
 
     let img;
@@ -23,7 +23,7 @@ const MenuListItem = ({menuItem}) => {
             <img className="menu__img" src={url} alt={title}></img>
             <div className="menu__category">Category: <span>{category}</span></div>
             <div className="menu__price">Price: <span>{price}$<img src={img} alt={title}></img></span></div>
-            <button className="menu__btn">Add to cart</button>
+            <button onClick={() => onAddToCart()} className="menu__btn">Add to cart</button>
         </li>
     )
 }
